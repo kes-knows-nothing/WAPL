@@ -1,0 +1,34 @@
+.analyze_container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(242, 237, 230);;
+}
+
+.title {
+    position: relative;
+    bottom: 10rem;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 5rem;
+}
+
+.analyze_figma {
+    position: relative;
+}
+
+.information_line {
+    position: relative;
+    top: 5rem;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 2rem;
+}
+
+.tistory_img {
+    width: 3rem;
+    position: relative;
+    top: 7rem;
+    cursor: pointer;
+}
