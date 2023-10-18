@@ -3,7 +3,7 @@ import './styles/wapl.scss'
 const Wapl = () => {
   return (
     <div className="wapl_container">
-      <span className="title">WPAL 전략 분석</span>
+      <span className="title">WAPL 전략 분석</span>
       <iframe
         style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
         width="800"

@@ -1,7 +1,7 @@
 import './styles/analyze.scss';
 
 const Analyze = () => {
-  const tistoryUrl = "https://kesknowsnothing.tistory.com/35";
+  const tistoryUrl = "https://brunch.co.kr/@lazykes/215";
 
   const moveToTistory = () => {
     window.open(tistoryUrl, "_blank");
@@ -22,7 +22,7 @@ const Analyze = () => {
       <span className="information_line">
         더 자세한 내용은 아래 블로그 글을 확인해주세요.
       </span>
-      <img src="./tistory.svg" alt="tistory" className="tistory_img" onClick={moveToTistory}/>
+      <img src="./brunch.svg" alt="brunch" className="brunch_img" onClick={moveToTistory}/>
     </div>
   );
 };
