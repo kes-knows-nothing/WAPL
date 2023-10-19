@@ -10,10 +10,10 @@ function App() {
     window.scroll({ top: 0, behavior: "smooth" });
   };
   const moveAnalyze = () => {
-    window.scroll({ top: 920, behavior: "smooth" });
+    window.scroll({ top: 874, behavior: "smooth" });
   }
   const moveWapl = () => {
-    window.scroll({ top: 2000, behavior: "smooth" });
+    window.scroll({ top: 1845, behavior: "smooth" });
   }
   const moveWrap = () => {
     window.scroll({ top: 5934, behavior: "smooth" });
