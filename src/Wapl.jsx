@@ -1,8 +1,12 @@
 import './styles/wapl.scss'
-
+import { useEffect, useRef } from 'react';
 const Wapl = () => {
+  const waplRef = useRef()
+  useEffect(()=>{
+    console.log(waplRef.current.offsetTop)
+  })
   return (
-    <div className="wapl_container">
+    <div className="wapl_container" ref={waplRef}>
       <span className="title">WAPL 전략 분석</span>
       <iframe
         style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}

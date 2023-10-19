@@ -1,8 +1,14 @@
 import "./styles/data.scss";
+import { useRef, useEffect } from "react";
 
 const Data = () => {
+  const dataDivRef = useRef(null);
+
+  useEffect(() => {
+    console.log(dataDivRef.current.offsetTop);
+  }, []);
   return (
-    <div className="data_container">
+    <div className="data_container" ref={dataDivRef}>
       <span className="title">WAPL 역기획</span>
       <div className="data_wrapper">
         <iframe

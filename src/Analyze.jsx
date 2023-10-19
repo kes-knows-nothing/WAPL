@@ -1,14 +1,17 @@
 import './styles/analyze.scss';
-
+import { useEffect, useRef } from 'react';
 const Analyze = () => {
   const tistoryUrl = "https://brunch.co.kr/@lazykes/215";
-
+  const analyzeRef = useRef()
   const moveToTistory = () => {
     window.open(tistoryUrl, "_blank");
   };
 
+  useEffect(()=>{
+    console.log(analyzeRef.current.offsetTop)
+  })
   return (
-    <div className="analyze_container">
+    <div className="analyze_container" ref={analyzeRef}>
       <span className="title">시장 분석</span>
       <iframe
         className="analyze_figma"
