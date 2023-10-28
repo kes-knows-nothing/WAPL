@@ -2,6 +2,8 @@ import "./styles/wrapup.scss";
 import { useEffect, useRef, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "./firebaseApp";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Wrapup = () => {
   const wrapDivRef = useRef();
@@ -15,20 +17,20 @@ const Wrapup = () => {
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
-      alert("클립보드에 링크가 복사되었습니다.");
+      toast.success("복사 완료!");
     } catch (e) {
       alert("복사에 실패하였습니다");
     }
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(comment)
+    console.log(comment);
     try {
       await addDoc(collection(db, "comments"), {
-        comment
+        comment,
       });
       setComment("");
-      console.log("저장 완료")
+      toast.success("피드백이 전송되었습니다.");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -39,6 +41,20 @@ const Wrapup = () => {
   });
   return (
     <div className="wrapup_container" ref={wrapDivRef}>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+        style={{ fontSize: "13px" }} 
+      />
+
       <div className="contact">
         <span
           className="copy"
@@ -91,7 +107,7 @@ const Wrapup = () => {
           placeholder="작은 피드백도 큰 도움이 됩니다. 감사합니다."
           value={comment}
         />
-        <button>피드백 전송</button>
+        <button className="feedback_button">피드백 전송</button>
       </form>
     </div>
   );
