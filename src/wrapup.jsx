@@ -1,10 +1,17 @@
 import "./styles/wrapup.scss";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "./firebaseApp";
 
 const Wrapup = () => {
   const wrapDivRef = useRef();
   const emailRef = useRef();
   const numberRef = useRef();
+  const [comment, setComment] = useState("");
+
+  const handleComment = (e) => {
+    setComment(e.target.value);
+  };
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -13,6 +20,20 @@ const Wrapup = () => {
       alert("복사에 실패하였습니다");
     }
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(comment)
+    try {
+      await addDoc(collection(db, "comments"), {
+        comment
+      });
+      setComment("");
+      console.log("저장 완료")
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  };
+
   useEffect(() => {
     console.log(wrapDivRef.current.offsetTop);
   });
@@ -53,7 +74,7 @@ const Wrapup = () => {
           혹시 내용이 마음에 드셨다면 연락 부탁드리겠습니다!
         </span>
         <span className="letter_line">
-          많이 부족하다고 느끼셨다면 이메일이나 문자를 통해 짧은 피드백이라도
+          많이 부족하다고 느끼셨다면 아래 입력창을 통해 짧은 피드백이라도
           남겨주시면 감사하겠습니다.
         </span>
         <span className="letter_line">
@@ -63,6 +84,15 @@ const Wrapup = () => {
           저에게 배울 수 있는 기회를 주셔서 감사합니다.
         </span>
       </div>
+      <form action="" onSubmit={handleSubmit} className="feedback_form">
+        <textarea
+          className="feedback_input"
+          onChange={handleComment}
+          placeholder="작은 피드백도 큰 도움이 됩니다. 감사합니다."
+          value={comment}
+        />
+        <button>피드백 전송</button>
+      </form>
     </div>
   );
 };
